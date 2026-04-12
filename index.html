@@ -1,1 +1,161 @@
-o
+<section class="vps-container">
+    <div class="vps-header">
+        <h2 class="vps-title">📉 CORE CHEAP VPS – BUDGET KING 📉</h2>
+        <p class="vps-subtitle">Low Price, High Performance – Powered by Intel Xeon V4</p>
+    </div>
+
+    <div class="vps-grid">
+        <div class="vps-card theme-blue">
+            <div class="plan-tag">『 🔹 PLAN: UL-1 』</div>
+            <div class="price">₹110 <span>/ Month</span></div>
+            <ul class="specs">
+                <li>🧠 RAM: 8 GB DDR4</li>
+                <li>⚡ CPU: 2 vCores</li>
+                <li>📀 SSD: 50 GB NVMe</li>
+            </ul>
+            <button class="buy-btn">Grab Now</button>
+        </div>
+
+        <div class="vps-card theme-purple">
+            <div class="plan-tag">『 🔹 PLAN: UL-2 』</div>
+            <div class="price">₹170 <span>/ Month</span></div>
+            <ul class="specs">
+                <li>🧠 RAM: 16 GB DDR4</li>
+                <li>⚡ CPU: 4 vCores</li>
+                <li>📀 SSD: 100 GB NVMe</li>
+            </ul>
+            <button class="buy-btn">Grab Now</button>
+        </div>
+
+        <div class="vps-card theme-red">
+            <div class="plan-tag">『 🔹 PLAN: XL-2 』🔥</div>
+            <div class="price">₹470 <span>/ Month</span></div>
+            <ul class="specs">
+                <li>🧠 RAM: 64 GB DDR4</li>
+                <li>⚡ CPU: 12 vCores</li>
+                <li>📀 SSD: 500 GB NVMe</li>
+            </ul>
+            <button class="buy-btn">Grab Now</button>
+        </div>
+    </div>
+
+    <div class="vps-footer-info">
+        <div class="network-box">
+            <h3>🌐 NETWORK DETAILS</h3>
+            <p>📍 Public IPv4: ₹190 / Month (Extra)</p>
+            <p>🎁 FREE Option: Tailscale IPv4 available!</p>
+        </div>
+    </div>
+</section>
+
+:root {
+    --bg-dark: #0f0f13;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --blue: #3b82f6;
+    --red: #ef4444;
+    --purple: #a855f7;
+    --green: #22c55e;
+}
+
+.vps-container {
+    background: var(--bg-dark);
+    color: white;
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.vps-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.vps-title {
+    font-size: 2rem;
+    color: #ffcc00; /* Gold for Budget King */
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.vps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Base Style */
+.vps-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.vps-card:hover {
+    transform: translateY(-10px);
+}
+
+.plan-tag {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.price span {
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+.specs {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.specs li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Color Themes */
+.theme-blue { border-top: 5px solid var(--blue); }
+.theme-blue .buy-btn { background: var(--blue); color: white; }
+
+.theme-red { border-top: 5px solid var(--red); }
+.theme-red .buy-btn { background: var(--red); color: white; }
+
+.theme-purple { border-top: 5px solid var(--purple); }
+.theme-purple .buy-btn { background: var(--purple); color: white; }
+
+.vps-footer-info {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.network-box {
+    background: rgba(255,255,255,0.03);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    border: 1px dashed #555;
+}
