@@ -3,200 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreMMC | Premium VPS Hosting</title>
+    <title>CoreMMC | Premium Hosting</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: radial-gradient(circle at top, #1a1a2e 0%, #0f0f1a 100%);
+            margin: 0;
+            padding: 0;
             color: white;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+
+        /* Animated GIF Background */
+        .bg-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                        url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3AzemtiMDFpcmtyNmo4eWtocTZlOTdqdzBxMTV6cTQwbWhjNTgyMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XA7SowKNg2rHyV4dgu/giphy.gif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            border-radius: 20px;
+            transition: 0.3s;
         }
-        .glass-card:hover {
-            transform: translateY(-5px);
+
+        .plan-card:hover {
+            transform: translateY(-10px);
             border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
-        .section-divider {
-            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-            margin: 4rem 0;
+
+        .minecraft-btn {
+            background: #3b82f6;
+            box-shadow: 0 4px 0 #1d4ed8;
+            transition: 0.1s;
         }
-        .discord-btn {
-            background: #5865F2;
-            transition: all 0.3s ease;
+
+        .minecraft-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #1d4ed8;
         }
-        .discord-btn:hover {
-            background: #4752C4;
-            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+
+        .section-label {
+            background: #ef4444;
+            padding: 2px 10px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="pb-20">
+    <div class="bg-gif"></div>
 
-    <header class="text-center mb-16">
-        <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-4">CoreMMC</h1>
-        <p class="text-gray-400 text-lg">Next-Gen VPS Hosting Powered by Enterprise Hardware</p>
-    </header>
-
-    <section class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-4 mb-8">
-            <span class="bg-blue-600 px-3 py-1 rounded text-xs font-bold">SECTION 01</span>
-            <h2 class="text-2xl font-bold italic">🚀 INTEL XEON V4 – POWER SERIES</h2>
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-black">C</div>
+            <span class="text-2xl font-black tracking-tighter italic">CoreMMC</span>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
-                <div class="text-blue-400 font-bold mb-2">PLAN: UL-1</div>
-                <div class="text-3xl font-black mb-4">₹180<span class="text-sm text-gray-400">/mo</span></div>
-                <ul class="space-y-3 text-sm text-gray-300">
-                    <li><i class="fa-solid fa-microchip mr-2 text-blue-500"></i> 2 vCores CPU</li>
-                    <li><i class="fa-solid fa-memory mr-2 text-blue-500"></i> 8 GB DDR4 RAM</li>
-                    <li><i class="fa-solid fa-hard-drive mr-2 text-blue-500"></i> 50 GB NVMe SSD</li>
-                </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="discord-btn block text-center mt-6 py-2 rounded-lg font-bold">Deploy Now</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl border-blue-500/50 scale-105 shadow-xl shadow-blue-500/10">
-                <div class="text-blue-400 font-bold mb-2">PLAN: UL-2</div>
-                <div class="text-3xl font-black mb-4">₹280<span class="text-sm text-gray-400">/mo</span></div>
-                <ul class="space-y-3 text-sm text-gray-300">
-                    <li><i class="fa-solid fa-microchip mr-2 text-blue-500"></i> 4 vCores CPU</li>
-                    <li><i class="fa-solid fa-memory mr-2 text-blue-500"></i> 16 GB DDR4 RAM</li>
-                    <li><i class="fa-solid fa-hard-drive mr-2 text-blue-500"></i> 100 GB NVMe SSD</li>
-                </ul>
-                <a href="#" class="discord-btn block text-center mt-6 py-2 rounded-lg font-bold">Deploy Now</a>
-            </div>
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="text-blue-400 font-bold mb-2">PLAN: UL-3</div>
-                <div class="text-3xl font-black mb-4">₹580<span class="text-sm text-gray-400">/mo</span></div>
-                <ul class="space-y-3 text-sm text-gray-300">
-                    <li><i class="fa-solid fa-microchip mr-2 text-blue-500"></i> 6 vCores CPU</li>
-                    <li><i class="fa-solid fa-memory mr-2 text-blue-500"></i> 32 GB DDR4 RAM</li>
-                    <li><i class="fa-solid fa-hard-drive mr-2 text-blue-500"></i> 100 GB NVMe SSD</li>
-                </ul>
-                <a href="#" class="discord-btn block text-center mt-6 py-2 rounded-lg font-bold">Deploy Now</a>
-            </div>
+        <div class="hidden md:flex gap-6 text-sm font-bold">
+            <a href="#" class="hover:text-blue-400">Hosting</a>
+            <a href="#" class="hover:text-blue-400">Panels</a>
+            <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="bg-blue-600 px-4 py-2 rounded-lg">Get Started</a>
         </div>
-    </section>
+    </nav>
 
-    <div class="section-divider"></div>
-
-    <section class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-4 mb-8">
-            <span class="bg-red-600 px-3 py-1 rounded text-xs font-bold text-white">SECTION 03</span>
-            <h2 class="text-2xl font-bold italic">🎯 HEAVEN – AMD EYPC PERFORMANCE</h2>
+    <div class="max-w-7xl mx-auto px-4 mt-12">
+        <div class="mb-10">
+            <span class="section-label bg-blue-600">Section 01 & 02</span>
+            <h2 class="text-3xl font-black mt-2">🚀 INTEL XEON V4 POWER SERIES</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            <div class="glass-card p-4 rounded-xl text-center border-red-500/20 hover:border-red-500">
-                <h3 class="text-red-400 font-bold text-xs uppercase mb-2">Starter</h3>
-                <div class="text-xl font-bold mb-2">₹450</div>
-                <div class="text-[10px] text-gray-400 line-through mb-2">₹550</div>
-                <div class="text-xs space-y-1 mb-4">
-                    <p>4GB RAM</p>
-                    <p>2 Core CPU</p>
-                    <p>40GB NVMe</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-panel p-6 plan-card">
+                <h3 class="text-gray-400 text-xs font-bold">PLAN: UL-1</h3>
+                <div class="text-3xl font-black my-2">₹180<span class="text-sm font-normal">/mo</span></div>
+                <div class="space-y-2 text-sm text-gray-300 mb-6">
+                    <p><i class="fa-solid fa-memory mr-2"></i> 8GB DDR4 RAM</p>
+                    <p><i class="fa-solid fa-microchip mr-2"></i> 2 vCores</p>
+                    <p><i class="fa-solid fa-hard-drive mr-2"></i> 50GB NVMe SSD</p>
                 </div>
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white text-[10px] px-3 py-2 rounded block font-bold transition">ORDER NOW</a>
+                <button class="w-full minecraft-btn py-2 rounded font-bold uppercase text-xs">Deploy Now</button>
             </div>
-            
-            <div class="glass-card p-4 rounded-xl text-center border-red-500/20 hover:border-red-500">
-                <h3 class="text-red-400 font-bold text-xs uppercase mb-2">Pro Choice</h3>
-                <div class="text-xl font-bold mb-2">₹690</div>
-                <div class="text-xs space-y-1 mb-4">
+            <div class="glass-panel p-6 plan-card border-blue-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-blue-400 text-xs font-bold">MEGA VPS 🚀</h3>
+                    <span class="bg-blue-500 text-[10px] px-2 rounded">BEST VALUE</span>
+                </div>
+                <div class="text-3xl font-black my-2">₹950<span class="text-sm font-normal">/mo</span></div>
+                <div class="space-y-2 text-sm text-gray-300 mb-6">
+                    <p><i class="fa-solid fa-memory mr-2"></i> 32GB DDR4 RAM</p>
+                    <p><i class="fa-solid fa-microchip mr-2"></i> 10 vCores</p>
+                    <p><i class="fa-solid fa-hard-drive mr-2"></i> 250GB NVMe</p>
+                </div>
+                <button class="w-full minecraft-btn py-2 rounded font-bold uppercase text-xs">Deploy Now</button>
+            </div>
+            <div class="glass-panel p-6 plan-card">
+                <h3 class="text-purple-400 text-xs font-bold">TITAN VPS 👑</h3>
+                <div class="text-3xl font-black my-2">₹1370<span class="text-sm font-normal">/mo</span></div>
+                <div class="space-y-2 text-sm text-gray-300 mb-6">
+                    <p><i class="fa-solid fa-memory mr-2"></i> 48GB DDR4 RAM</p>
+                    <p><i class="fa-solid fa-microchip mr-2"></i> 14 vCores</p>
+                    <p><i class="fa-solid fa-hard-drive mr-2"></i> 400GB NVMe</p>
+                </div>
+                <button class="w-full minecraft-btn py-2 rounded font-bold uppercase text-xs">Deploy Now</button>
+            </div>
+            <div class="glass-panel p-6 plan-card">
+                <h3 class="text-gray-400 text-xs font-bold">PLAN: UL-3</h3>
+                <div class="text-3xl font-black my-2">₹580<span class="text-sm font-normal">/mo</span></div>
+                <div class="space-y-2 text-sm text-gray-300 mb-6">
+                    <p><i class="fa-solid fa-memory mr-2"></i> 32GB RAM</p>
+                    <p><i class="fa-solid fa-microchip mr-2"></i> 6 vCores</p>
+                    <p><i class="fa-solid fa-hard-drive mr-2"></i> 100GB NVMe</p>
+                </div>
+                <button class="w-full minecraft-btn py-2 rounded font-bold uppercase text-xs">Deploy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 mt-20">
+        <div class="mb-10">
+            <span class="section-label bg-orange-600">Section 04</span>
+            <h2 class="text-3xl font-black mt-2">⚡ HEAVEN – RYZEN 9 PERFORMANCE</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+            <div class="glass-panel p-4 plan-card border-orange-900/50">
+                <h4 class="text-orange-500 font-bold text-xs">BRONZE</h4>
+                <div class="text-xl font-black mt-1">₹480</div>
+                <div class="text-[10px] text-gray-500 line-through">₹590</div>
+                <div class="my-4 text-[11px] space-y-1">
+                    <p>4GB RAM</p>
+                    <p>1 Core Ryzen 9</p>
+                    <p>15GB NVMe</p>
+                </div>
+                <button class="w-full bg-orange-600 py-1.5 rounded text-[10px] font-bold">ORDER</button>
+            </div>
+            <div class="glass-panel p-4 plan-card border-yellow-500 scale-105 bg-yellow-500/5">
+                <h4 class="text-yellow-500 font-bold text-xs">GOLD</h4>
+                <div class="text-xl font-black mt-1">₹1359</div>
+                <div class="text-[10px] text-gray-500 line-through">₹1499</div>
+                <div class="my-4 text-[11px] space-y-1">
+                    <p>16GB RAM</p>
+                    <p>2 Cores Ryzen 9</p>
+                    <p>45GB NVMe</p>
+                </div>
+                <button class="w-full bg-yellow-600 py-1.5 rounded text-[10px] font-bold text-black">ORDER</button>
+            </div>
+            <div class="glass-panel p-4 plan-card">
+                <h4 class="text-blue-400 font-bold text-xs">PLATINUM</h4>
+                <div class="text-xl font-black mt-1">₹1499</div>
+                <div class="my-4 text-[11px] space-y-1">
+                    <p>24GB RAM</p>
+                    <p>3 Cores Ryzen 9</p>
+                    <p>70GB NVMe</p>
+                </div>
+                <button class="w-full bg-blue-600 py-1.5 rounded text-[10px] font-bold">ORDER</button>
+            </div>
+            <div class="glass-panel p-4 plan-card border-red-500">
+                <h4 class="text-red-500 font-bold text-xs">ULTIMATE BEAST</h4>
+                <div class="text-xl font-black mt-1">₹1999</div>
+                <div class="my-4 text-[11px] space-y-1">
+                    <p>32GB RAM</p>
+                    <p>4 Cores Ryzen 9</p>
+                    <p>100GB NVMe</p>
+                </div>
+                <button class="w-full bg-red-600 py-1.5 rounded text-[10px] font-bold">ORDER</button>
+            </div>
+            <div class="glass-panel p-4 plan-card">
+                <h4 class="text-gray-300 font-bold text-xs">SILVER</h4>
+                <div class="text-xl font-black mt-1">₹690</div>
+                <div class="my-4 text-[11px] space-y-1">
                     <p>8GB RAM</p>
                     <p>2 Cores</p>
                     <p>25GB NVMe</p>
                 </div>
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white text-[10px] px-3 py-2 rounded block font-bold transition">ORDER NOW</a>
-            </div>
-
-            <div class="glass-card p-4 rounded-xl text-center border-yellow-500 bg-yellow-500/5">
-                <div class="bg-yellow-500 text-black text-[8px] font-black absolute top-0 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-b">HOT PRODUCT</div>
-                <h3 class="text-yellow-500 font-bold text-xs uppercase mb-2 mt-2">Ultimate Beast</h3>
-                <div class="text-xl font-bold mb-2">₹1550</div>
-                <div class="text-xs space-y-1 mb-4 text-yellow-100">
-                    <p>32GB RAM</p>
-                    <p>4 Cores</p>
-                    <p>100GB NVMe</p>
-                </div>
-                <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-black text-[10px] px-3 py-2 rounded block font-bold transition">ORDER NOW</a>
-            </div>
-
-            <div class="glass-card p-4 rounded-xl text-center border-red-500/20 hover:border-red-500">
-                <h3 class="text-red-400 font-bold text-xs uppercase mb-2">Elite</h3>
-                <div class="text-xl font-bold mb-2">₹900</div>
-                <div class="text-xs space-y-1 mb-4">
-                    <p>16GB RAM</p>
-                    <p>2 Cores</p>
-                    <p>45GB NVMe</p>
-                </div>
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white text-[10px] px-3 py-2 rounded block font-bold transition">ORDER NOW</a>
-            </div>
-
-            <div class="glass-card p-4 rounded-xl text-center border-red-500/20 hover:border-red-500">
-                <h3 class="text-red-400 font-bold text-xs uppercase mb-2">Power House</h3>
-                <div class="text-xl font-bold mb-2">₹1200</div>
-                <div class="text-xs space-y-1 mb-4">
-                    <p>24GB RAM</p>
-                    <p>3 Cores</p>
-                    <p>70GB NVMe</p>
-                </div>
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white text-[10px] px-3 py-2 rounded block font-bold transition">ORDER NOW</a>
+                <button class="w-full bg-gray-600 py-1.5 rounded text-[10px] font-bold">ORDER</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <div class="section-divider"></div>
-
-    <section class="max-w-6xl mx-auto mb-20">
+    <div class="max-w-7xl mx-auto px-4 mt-20">
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-black text-yellow-500 uppercase tracking-widest">👑 COREMMC DEDICATED PREMIER 👑</h2>
-            <p class="text-gray-400">No Overselling | 100% Resource Reservation</p>
+            <h2 class="text-4xl font-black italic text-yellow-500">👑 DEDICATED PREMIER 👑</h2>
+            <p class="text-gray-400">Zero Shared Resources | Guaranteed Performance</p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-8 rounded-3xl border-l-4 border-l-yellow-500 flex justify-between items-center">
+            <div class="glass-panel p-8 flex justify-between items-center border-l-4 border-yellow-500">
                 <div>
-                    <h3 class="text-2xl font-bold mb-2">ELITE - GEN 2</h3>
-                    <div class="flex gap-4 text-sm text-gray-300">
-                        <span><i class="fa-solid fa-microchip text-yellow-500"></i> 6 Dedicated vCores</span>
-                        <span><i class="fa-solid fa-memory text-yellow-500"></i> 16GB RAM</span>
-                    </div>
-                    <div class="mt-4 text-xs text-blue-400">Includes Dedicated Public IPv4 + 20 IPv6</div>
+                    <h3 class="text-2xl font-black">ELITE - GEN 2</h3>
+                    <p class="text-sm text-gray-400 mt-2">16GB RAM | 6 vCores Dedicated</p>
+                    <p class="text-[10px] text-blue-400 mt-1 italic">Includes Public IPv4</p>
                 </div>
                 <div class="text-right">
                     <div class="text-3xl font-black">₹1,500</div>
-                    <div class="text-xs text-gray-500 line-through">₹2,000</div>
-                    <button class="mt-4 bg-white text-black px-6 py-2 rounded-full text-xs font-black hover:bg-yellow-500 transition">CLAIM NOW</button>
+                    <button class="mt-3 bg-white text-black px-6 py-2 rounded-full font-bold text-xs">CLAIM NOW</button>
                 </div>
             </div>
-
-            <div class="glass-card p-8 rounded-3xl border-l-4 border-l-red-600 bg-gradient-to-br from-red-900/10 to-transparent flex justify-between items-center">
+            <div class="glass-panel p-8 flex justify-between items-center border-l-4 border-red-600 bg-red-600/5">
                 <div>
-                    <div class="bg-red-600 text-[10px] w-fit px-2 py-0.5 rounded mb-2">MOST POWERFUL</div>
-                    <h3 class="text-2xl font-bold mb-2">ELITE - GEN 4 🔥</h3>
-                    <div class="flex gap-4 text-sm text-gray-300">
-                        <span><i class="fa-solid fa-microchip text-red-600"></i> 16 Dedicated vCores</span>
-                        <span><i class="fa-solid fa-memory text-red-600"></i> 64GB RAM</span>
-                    </div>
+                    <span class="bg-red-600 text-[10px] px-2 py-0.5 rounded font-bold uppercase">Most Powerful</span>
+                    <h3 class="text-2xl font-black mt-2">ELITE - GEN 4 🔥</h3>
+                    <p class="text-sm text-gray-400 mt-1">64GB RAM | 16 vCores Dedicated</p>
                 </div>
                 <div class="text-right">
                     <div class="text-3xl font-black">₹4,400</div>
-                    <button class="mt-4 bg-red-600 text-white px-6 py-2 rounded-full text-xs font-black hover:bg-red-700 transition">UPGRADE</button>
+                    <button class="mt-3 bg-red-600 text-white px-6 py-2 rounded-full font-bold text-xs">UPGRADE</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="text-center py-12 border-t border-white/5">
-        <p class="text-gray-500 mb-6">Need help? Open a ticket in our support portal.</p>
-        <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="discord-btn px-10 py-4 rounded-xl font-black text-xl inline-flex items-center gap-3">
-            <i class="fa-brands fa-discord"></i> OPEN SUPPORT TICKET
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" 
+           class="bg-[#5865F2] hover:bg-[#4752C4] flex items-center gap-3 px-6 py-3 rounded-2xl font-black shadow-2xl transition-all hover:scale-105">
+            <i class="fa-brands fa-discord text-2xl"></i> OPEN TICKET
         </a>
-    </footer>
+    </div>
 
 </body>
 </html>
