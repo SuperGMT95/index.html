@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoreMMC | High-Performance VPS Hosting</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Base Styling - Matching your core theme */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        /* Base Styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         body { background: #050816; color: white; overflow-x: hidden; }
 
+        /* Animated Fixed Background */
         .main-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGNmemxiNWx6cXBvZ2Zyb3hpOGJ4cHdjZ2JpYzVjZnQxZWdvZmY4MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IepJKLLnVc17nPRkTh/giphy.gif') center/cover;
-            filter: blur(10px) brightness(0.3); z-index: -10;
+            background: radial-gradient(circle at top right, #1e3a8a, transparent),
+                        radial-gradient(circle at bottom left, #450a0a, transparent),
+                        #050816;
+            z-index: -10;
         }
 
         /* Snowflake Animation */
@@ -23,85 +27,73 @@
         /* Navbar */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(0, 0, 0, 0.85);
+            padding: 15px 8%; background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #3b82f6; }
+        .logo { font-size: 1.6rem; font-weight: 900; display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+        .logo img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #3b82f6; }
         .logo span { color: #3b82f6; }
 
-        /* VPS Sections Wrapper */
-        .container { max-width: 1300px; margin: 0 auto; padding: 120px 20px 60px; }
-        
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 18px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(59, 130, 246, 0.4); text-transform: uppercase; }
-        h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; }
-        h1 span { color: #3b82f6; }
-        .sub-text { color: #9ca3af; font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { color: #d1d5db; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: #3b82f6; }
+
+        /* Common Hero UI */
+        section { padding: 140px 5% 80px; text-align: center; min-height: 100vh; }
+        .badge { background: rgba(59, 130, 246, 0.1); color: #60a5fa; padding: 8px 20px; border-radius: 30px; font-size: 12px; font-weight: bold; border: 1px solid rgba(59, 130, 246, 0.3); display: inline-block; margin-bottom: 20px; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        h1 span { color: #3b82f6; text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .sub-desc { color: #9ca3af; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; line-height: 1.6; }
 
         /* Pricing Grid */
-        .vps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
         
-        .vps-card {
-            background: rgba(17, 24, 39, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 35px;
-            transition: all 0.4s ease;
-            position: relative;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
+        .card { 
+            background: rgba(17, 24, 39, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 24px; padding: 40px; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            position: relative; backdrop-filter: blur(10px); 
+            text-align: left; display: flex; flex-direction: column;
         }
-
-        .vps-card:hover {
-            transform: translateY(-10px);
-            border-color: #3b82f6;
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-        }
-
-        .popular-badge {
-            position: absolute; top: 15px; right: 20px;
-            background: #3b82f6; color: white; font-size: 10px; font-weight: 800;
-            padding: 4px 12px; border-radius: 10px; text-transform: uppercase;
-        }
-
-        .plan-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; color: #fff; }
-        .price { font-size: 2.2rem; font-weight: 900; color: #3b82f6; margin: 15px 0; }
+        .card:hover { transform: translateY(-15px); border-color: #3b82f6; box-shadow: 0 20px 50px rgba(59, 130, 246, 0.2); }
+        
+        .plan-header h3 { font-size: 1.8rem; margin-bottom: 5px; }
+        .price { font-size: 2.5rem; font-weight: 900; color: #fff; margin-bottom: 30px; }
         .price span { font-size: 1rem; color: #9ca3af; font-weight: 400; }
 
-        .spec-list { list-style: none; margin: 20px 0 30px; flex-grow: 1; }
-        .spec-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 14.5px; color: #d1d5db; }
-        .spec-list i { color: #3b82f6; width: 20px; font-size: 16px; }
+        .specs { list-style: none; margin-bottom: 35px; flex-grow: 1; }
+        .specs li { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: #d1d5db; font-size: 15px; }
+        .specs i { color: #3b82f6; font-size: 18px; width: 25px; }
 
-        .btn-order {
-            background: #3b82f6; color: white; text-align: center; text-decoration: none;
-            padding: 14px; border-radius: 12px; font-weight: 700; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+        .btn-order { 
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; 
+            padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 800; 
+            text-align: center; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .btn-order:hover { background: #2563eb; transform: scale(1.02); }
+        .btn-order:hover { filter: brightness(1.2); letter-spacing: 0.5px; }
 
         /* Section 2 Styling (Next Gen) */
-        .next-gen-title h1 span { color: #ef4444; }
-        .vps-card.premium:hover { border-color: #ef4444; box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15); }
-        .vps-card.premium .price { color: #ef4444; }
-        .vps-card.premium .spec-list i { color: #ef4444; }
-        .vps-card.premium .btn-order { background: #ef4444; }
-        .vps-card.premium .btn-order:hover { background: #dc2626; }
+        #nextgen { background: rgba(10, 10, 30, 0.4); border-top: 1px solid rgba(255,255,255,0.05); }
+        #nextgen h1 span { color: #ef4444; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+        #nextgen .card:hover { border-color: #ef4444; box-shadow: 0 20px 50px rgba(239, 68, 68, 0.2); }
+        #nextgen .specs i { color: #ef4444; }
+        #nextgen .btn-order { background: linear-gradient(135deg, #ef4444, #991b1b); }
 
-        /* Why Choose Us Section */
-        .why-us {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px; padding: 40px; margin-top: 50px;
-            border-left: 5px solid #3b82f6;
+        /* Features Box */
+        .features-row { 
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 60px;
         }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
-        .why-item { display: flex; align-items: center; gap: 10px; font-weight: 600; color: #facc15; }
+        .f-item { background: rgba(255,255,255,0.05); padding: 15px 25px; border-radius: 15px; font-weight: 600; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        .f-item i { color: #facc15; }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .vps-grid { grid-template-columns: 1fr; }
+            nav { padding: 10px 5%; }
+            .nav-links { display: none; }
+            h1 { font-size: 2.2rem; }
+            .plans-grid { padding: 0 10px; }
         }
     </style>
 </head>
@@ -111,138 +103,153 @@
 
     <nav>
         <a href="#" class="logo">
-            <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg" alt="Logo">
+            <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg" alt="CoreMMC Logo">
             <span>CoreMMC</span>
         </a>
-        <div style="font-size: 13px; font-weight: 600;">VPS SERVICES</div>
+        <ul class="nav-links">
+            <li><a href="#budget">Budget Series</a></li>
+            <li><a href="#nextgen">Next-Gen VPS</a></li>
+            <li><a href="https://discord.gg/SvQSv5E53" style="background: #3b82f6; padding: 8px 20px; border-radius: 8px; color: white;">Support</a></li>
+        </ul>
     </nav>
 
-    <div class="container">
-        
-        <div class="section-header">
-            <div class="badge">Budget Performance</div>
-            <h1>🚀 INTEL XEON V4 <span>POWER SERIES</span></h1>
-            <p class="sub-text">High-Performance VPS for Gaming & Workloads with enterprise-grade reliability.</p>
-        </div>
+    <section id="budget">
+        <div class="badge">Performance & Reliability</div>
+        <h1>🚀 INTEL XEON V4 <br><span>POWER SERIES</span></h1>
+        <p class="sub-desc">High-Performance VPS designed for Gaming, Workloads, and 24/7 Uptime. Deploy with CoreMMC confidence.</p>
 
-        <div class="vps-grid">
-            <div class="vps-card">
-                <div class="plan-title">PLAN: UL-1</div>
-                <div class="price">₹180 <span>/ Month</span></div>
-                <ul class="spec-list">
-                    <li><i class="fas fa-brain"></i> 8 GB DDR4 RAM</li>
+        <div class="plans-grid">
+            <div class="card">
+                <div class="plan-header">
+                    <h3>PLAN: UL-1</h3>
+                    <div class="price">₹180 <span>/Month</span></div>
+                </div>
+                <ul class="specs">
+                    <li><i class="fas fa-memory"></i> 8 GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 2 vCores CPU</li>
                     <li><i class="fas fa-hdd"></i> 50 GB NVMe SSD</li>
-                    <li><i class="fas fa-network-wired"></i> 1Gbps Port</li>
+                    <li><i class="fas fa-shield-halved"></i> Anti-DDoS Protection</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-ticket-alt"></i> Order via Ticket</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Order Now</a>
             </div>
 
-            <div class="vps-card">
-                <div class="popular-badge">Best Seller</div>
-                <div class="plan-title">PLAN: UL-2</div>
-                <div class="price">₹280 <span>/ Month</span></div>
-                <ul class="spec-list">
-                    <li><i class="fas fa-brain"></i> 16 GB DDR4 RAM</li>
+            <div class="card" style="border-color: rgba(59, 130, 246, 0.5);">
+                <div style="position:absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #3b82f6; padding: 5px 20px; border-radius: 20px; font-size: 10px; font-weight: 900;">BEST SELLER</div>
+                <div class="plan-header">
+                    <h3>PLAN: UL-2</h3>
+                    <div class="price">₹280 <span>/Month</span></div>
+                </div>
+                <ul class="specs">
+                    <li><i class="fas fa-memory"></i> 16 GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 4 vCores CPU</li>
                     <li><i class="fas fa-hdd"></i> 100 GB NVMe SSD</li>
-                    <li><i class="fas fa-network-wired"></i> 1Gbps Port</li>
+                    <li><i class="fas fa-shield-halved"></i> Enterprise Security</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-ticket-alt"></i> Order via Ticket</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Order Now</a>
             </div>
 
-            <div class="vps-card">
-                <div class="plan-title">PLAN: UL-3</div>
-                <div class="price">₹580 <span>/ Month</span></div>
-                <ul class="spec-list">
-                    <li><i class="fas fa-brain"></i> 32 GB DDR4 RAM</li>
+            <div class="card">
+                <div class="plan-header">
+                    <h3>PLAN: UL-3</h3>
+                    <div class="price">₹580 <span>/Month</span></div>
+                </div>
+                <ul class="specs">
+                    <li><i class="fas fa-memory"></i> 32 GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 6 vCores CPU</li>
                     <li><i class="fas fa-hdd"></i> 100 GB NVMe SSD</li>
-                    <li><i class="fas fa-network-wired"></i> 1Gbps Port</li>
+                    <li><i class="fas fa-headset"></i> 24/7 Priority Support</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-ticket-alt"></i> Order via Ticket</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Order Now</a>
             </div>
         </div>
 
-        <div class="why-us">
-            <h3>🛠️ WHY CHOOSE COREMMC?</h3>
-            <div class="why-grid">
-                <div class="why-item">✅ NVMe Speed: 5x Faster</div>
-                <div class="why-item">✅ Enterprise Hardware</div>
-                <div class="why-item">✅ 24/7 Priority Support</div>
-            </div>
+        <div class="features-row">
+            <div class="f-item"><i class="fas fa-bolt"></i> 5x Faster NVMe</div>
+            <div class="f-item"><i class="fas fa-server"></i> Xeon V4 Hardware</div>
+            <div class="f-item"><i class="fas fa-ticket"></i> Ticket Support</div>
         </div>
+    </section>
 
-        <hr style="border: none; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 80px 0;">
+    <section id="nextgen">
+        <div class="badge" style="color:#ef4444; border-color:#ef4444;">Extreme Performance</div>
+        <h1>🛡️ COREMMC <br><span>NEXT-GEN VPS</span></h1>
+        <p class="sub-desc">Next Generation infrastructure with high-speed nodes for those who demand the absolute best performance.</p>
 
-        <div class="section-header next-gen-title">
-            <div class="badge" style="color:#ef4444; border-color:#ef4444;">Extreme Performance</div>
-            <h1>🛡️ COREMMC – <span>NEXT GEN VPS</span></h1>
-            <p class="sub-text">Ultimate power for demanding applications. Turbo speed and dedicated resources.</p>
-        </div>
-
-        <div class="vps-grid">
-            <div class="vps-card premium">
-                <div class="plan-title">💎 ULTIMATE VPS</div>
-                <div class="price">₹340 <span>/mo</span></div>
-                <ul class="spec-list">
+        <div class="plans-grid">
+            <div class="card">
+                <div class="plan-header">
+                    <h3>ULTIMATE VPS</h3>
+                    <div class="price">₹340 <span>/month</span></div>
+                </div>
+                <ul class="specs">
                     <li><i class="fas fa-memory"></i> 12GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 4 vCores CPU</li>
                     <li><i class="fas fa-bolt"></i> 100GB NVMe Disk</li>
+                    <li><i class="fas fa-globe"></i> Turbo Speed Network</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-rocket"></i> Deploy Now</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Buy Now</a>
             </div>
 
-            <div class="vps-card premium">
-                <div class="plan-title">💎 PRO VPS</div>
-                <div class="price">₹450 <span>/mo</span></div>
-                <ul class="spec-list">
+            <div class="card">
+                <div class="plan-header">
+                    <h3>PRO VPS</h3>
+                    <div class="price">₹450 <span>/month</span></div>
+                </div>
+                <ul class="specs">
                     <li><i class="fas fa-memory"></i> 16GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 6 vCores CPU</li>
                     <li><i class="fas fa-bolt"></i> 120GB NVMe Disk</li>
+                    <li><i class="fas fa-check-circle"></i> Dedicated Resources</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-rocket"></i> Deploy Now</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Buy Now</a>
             </div>
 
-            <div class="vps-card premium">
-                <div class="popular-badge" style="background:#ef4444">High Demand</div>
-                <div class="plan-title">💎 EXTREME VPS</div>
-                <div class="price">₹750 <span>/mo</span></div>
-                <ul class="spec-list">
+            <div class="card">
+                <div class="plan-header">
+                    <h3>EXTREME VPS</h3>
+                    <div class="price">₹750 <span>/month</span></div>
+                </div>
+                <ul class="specs">
                     <li><i class="fas fa-memory"></i> 24GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 8 vCores CPU</li>
                     <li><i class="fas fa-bolt"></i> 200GB NVMe Disk</li>
+                    <li><i class="fas fa-gem"></i> Premium Tier Node</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-rocket"></i> Deploy Now</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Buy Now</a>
             </div>
 
-            <div class="vps-card premium">
-                <div class="plan-title">💎 MEGA VPS 🚀</div>
-                <div class="price">₹950 <span>/mo</span></div>
-                <ul class="spec-list">
+            <div class="card">
+                <div class="plan-header">
+                    <h3>MEGA VPS 🚀</h3>
+                    <div class="price">₹950 <span>/month</span></div>
+                </div>
+                <ul class="specs">
                     <li><i class="fas fa-memory"></i> 32GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 10 vCores CPU</li>
                     <li><i class="fas fa-bolt"></i> 250GB NVMe Disk</li>
+                    <li><i class="fas fa-rocket"></i> Ultra Performance</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-rocket"></i> Deploy Now</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Buy Now</a>
             </div>
 
-            <div class="vps-card premium">
-                <div class="popular-badge" style="background:#facc15; color:#000">👑 Flagship</div>
-                <div class="plan-title">🔥 TITAN VPS 👑</div>
-                <div class="price">₹1370 <span>/mo</span></div>
-                <ul class="spec-list">
+            <div class="card" style="border-color: rgba(239, 68, 68, 0.5);">
+                <div class="plan-header">
+                    <h3>🔥 TITAN VPS 👑</h3>
+                    <div class="price">₹1370 <span>/month</span></div>
+                </div>
+                <ul class="specs">
                     <li><i class="fas fa-memory"></i> 48GB DDR4 RAM</li>
                     <li><i class="fas fa-microchip"></i> 14 vCores CPU</li>
                     <li><i class="fas fa-bolt"></i> 400GB NVMe Disk</li>
+                    <li><i class="fas fa-crown"></i> Full System Access</li>
                 </ul>
-                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order"><i class="fas fa-rocket"></i> Deploy Now</a>
+                <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">Buy Now</a>
             </div>
         </div>
-
-    </div>
+    </section>
 
     <script>
+        // Snow Effect
         function createSnow() {
             const snow = document.createElement('div');
             snow.classList.add('snowflake');
