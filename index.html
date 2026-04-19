@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreMMC | High-Level VPS Hosting</title>
+    <title>CoreMMC | Premium VPS Hosting</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Base Styling */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #050816; color: white; overflow-x: hidden; }
+        body { background: #020617; color: white; overflow-x: hidden; }
 
-        /* Background GIF */
+        /* Background Image (Server Room) */
         .main-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGNmemxiNWx6cXBvZ2Zyb3hpOGJ4cHdjZ2JpYzVjZnQxZWdvZmY4MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IepJKLLnVc17nPRkTh/giphy.gif') center/cover;
-            filter: blur(8px) brightness(0.3); z-index: -10;
+            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), 
+                        url('https://raw.githubusercontent.com/supergmt95/minecraft-hosting/main/1000080853.jpg'); /* Using your server image */
+            background-size: cover; background-position: center;
+            z-index: -10; filter: saturate(1.2);
         }
 
         /* Snowflake Animation */
@@ -25,73 +27,70 @@
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 1000;
+            backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #facc15; }
-        .logo span { color: #facc15; }
+        .logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #3b82f6; }
+        .logo span { color: #3b82f6; }
 
-        /* Hero & Switcher */
+        /* Hero Section */
         .hero { padding: 120px 20px 40px; text-align: center; }
-        .badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 18px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.4); }
-        h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 25px; font-weight: 900; }
-        h1 span { color: #3b82f6; }
+        .badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 18px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(59, 130, 246, 0.4); }
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; }
+        h1 span { color: #3b82f6; text-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
 
-        /* 4-Page Navigation Tab */
-        .tab-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        /* Location & Language Info Bar */
+        .extra-info-bar {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;
+        }
+        .info-tag {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 15px; border-radius: 10px; font-size: 13px; display: flex; align-items: center; gap: 8px;
+        }
+        .info-tag i { color: #facc15; }
+
+        /* Tab Navigation */
+        .tab-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
         .tab-btn { 
-            padding: 12px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 12px; color: #9ca3af; cursor: pointer; font-weight: 700; transition: 0.3s;
+            padding: 12px 22px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 12px; color: #d1d5db; cursor: pointer; font-weight: 700; transition: 0.3s;
             display: flex; align-items: center; gap: 8px; font-size: 14px;
         }
-        .tab-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-        .tab-btn:hover { background: rgba(59, 130, 246, 0.2); color: white; }
-
-        /* Info Box */
-        .info-box { 
-            max-width: 800px; margin: 0 auto 40px; padding: 20px; 
-            background: rgba(255,255,255,0.03); border-radius: 15px; border-left: 4px solid #3b82f6;
-            text-align: left; font-size: 14px; color: #d1d5db;
-        }
+        .tab-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
 
         /* Plans Grid */
-        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; }
-        
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px; }
         .card { 
-            background: rgba(17, 24, 39, 0.8); border: 1px solid rgba(255,255,255,0.08); 
-            border-radius: 20px; padding: 25px; transition: 0.4s; text-align: left;
-            position: relative; overflow: hidden;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 24px; padding: 30px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-align: left;
+            backdrop-filter: blur(10px);
         }
-        .card:hover { transform: translateY(-10px); border-color: #3b82f6; }
+        .card:hover { transform: translateY(-10px); border-color: #3b82f6; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); }
         
-        .plan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .plan-name { font-size: 1.4rem; font-weight: 800; }
-        .price-tag { text-align: right; }
-        .price-tag h3 { font-size: 1.6rem; color: #fff; }
-        .price-tag span { font-size: 11px; color: #aaa; display: block; }
+        .plan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .plan-name { font-size: 1.5rem; font-weight: 800; }
+        .price-tag h3 { font-size: 1.8rem; color: #fff; }
+        .price-tag span { font-size: 11px; color: #94a3b8; display: block; text-align: right; }
 
-        .specs-list { list-style: none; margin-bottom: 25px; }
-        .specs-list li { font-size: 13px; color: #d1d5db; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .specs-list li i { color: #3b82f6; width: 18px; }
+        .specs-list { list-style: none; margin-bottom: 30px; }
+        .specs-list li { font-size: 14px; color: #cbd5e1; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+        .specs-list li i { color: #3b82f6; font-size: 16px; }
 
-        .btn-buy { 
-            width: 100%; padding: 12px; border-radius: 10px; border: none; 
-            background: #3b82f6; color: white; font-weight: 800; cursor: pointer; 
-            transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        .btn-order { 
+            width: 100%; padding: 14px; border-radius: 12px; border: none; 
+            background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; font-weight: 800; cursor: pointer; 
+            transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;
         }
-        .btn-buy:hover { filter: brightness(1.2); }
+        .btn-order:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        /* Red Theme for High End Sections */
-        .theme-red .tab-btn.active { background: #ef4444; border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-        .theme-red .info-box { border-left-color: #ef4444; }
-        .theme-red .specs-list li i { color: #ef4444; }
-        .theme-red .btn-buy { background: #ef4444; }
-        .theme-red h1 span { color: #ef4444; }
+        /* Footer Info */
+        .support-box { margin-top: 50px; padding: 30px; background: rgba(0,0,0,0.5); border-radius: 20px; border: 1px dashed rgba(255,255,255,0.2); display: inline-block; }
+        .support-link { color: #3b82f6; text-decoration: none; font-weight: bold; }
 
         @media (max-width: 768px) {
-            .hero { padding-top: 100px; }
-            .plans-grid { padding: 0 15px; }
+            .tab-btn { padding: 10px 15px; font-size: 12px; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -102,36 +101,34 @@
     <nav>
         <a href="#" class="logo">
             <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg" alt="CoreMMC">
-            <span>CoreMMC</span>
+            <span>CoreMMC Hosting</span>
         </a>
-        <div style="font-size: 12px; font-weight: bold; color: #aaa;">VPS DASHBOARD</div>
+        <a href="https://discord.gg/SvQSv5E53" class="tab-btn active" style="padding: 8px 15px;"><i class="fab fa-discord"></i> Discord Support</a>
     </nav>
 
     <section class="hero">
         <div class="badge" id="pageBadge">BUDGET SERIES</div>
         <h1 id="heroTitle">CoreMMC <span>Budget VPS</span></h1>
         
+        <div class="extra-info-bar">
+            <div class="info-tag"><i class="fas fa-bolt"></i> Locations: India 🇮🇳, Germany 🇩🇪</div>
+            <div class="info-tag"><i class="fas fa-language"></i> Lang: English (USA) 🇺🇸, Urdu/Hindi 🇵🇰🇮🇳</div>
+            <div class="info-tag"><i class="fas fa-money-bill-wave"></i> Currency: INR / USD</div>
+        </div>
+
         <div class="tab-container">
-            <button class="tab-btn active" onclick="switchPage('budget', this)">
-                <i class="fas fa-wallet"></i> Budget VPS
-            </button>
-            <button class="tab-btn" onclick="switchPage('intel', this)">
-                <i class="fas fa-microchip"></i> Intel VPS
-            </button>
-            <button class="tab-btn" onclick="switchPage('amd', this)">
-                <i class="fas fa-server"></i> AMD Epyc VPS
-            </button>
-            <button class="tab-btn" onclick="switchPage('ryzen', this)">
-                <i class="fas fa-bolt"></i> Ryzen 9 VPS
-            </button>
+            <button class="tab-btn active" onclick="switchPage('budget', this)"><i class="fas fa-wallet"></i> Budget VPS</button>
+            <button class="tab-btn" onclick="switchPage('intel', this)"><i class="fas fa-microchip"></i> Intel VPS</button>
+            <button class="tab-btn" onclick="switchPage('amd', this)"><i class="fas fa-server"></i> AMD Epyc VPS</button>
+            <button class="tab-btn" onclick="switchPage('ryzen', this)"><i class="fas fa-fire"></i> Ryzen 9 VPS</button>
         </div>
 
-        <div class="info-box" id="infoBox">
-            Low-cost, high-reliability VPS hosting. Perfect for small projects, discord bots, and lightweight applications. OS: Linux/Ubuntu supported.
-        </div>
+        <div class="plans-grid" id="plansContainer"></div>
 
-        <div class="plans-grid" id="plansContainer">
-            </div>
+        <div class="support-box">
+            <p>Need custom configuration or help?</p>
+            <p>Contact Support via Discord: <a href="https://discord.gg/SvQSv5E53" class="support-link">discord.gg/coremmc</a></p>
+        </div>
     </section>
 
     <script>
@@ -139,8 +136,6 @@
             budget: {
                 badge: "BUDGET SERIES",
                 title: "CoreMMC <span>Budget VPS</span>",
-                info: "Instant Setup, Low Latency, and Full Root Access. Ideal for starters and small projects.",
-                theme: "theme-blue",
                 plans: [
                     { name: "NOOB", price: "60", ram: "1GB", cpu: "1 vCPU", ssd: "20GB SSD", extra: "1 TB Bandwidth" },
                     { name: "AMATEUR", price: "120", ram: "2GB", cpu: "1-2 vCPU", ssd: "40GB SSD", extra: "2 TB Bandwidth" },
@@ -151,59 +146,42 @@
                 ]
             },
             intel: {
-                badge: "INTEL NEXT-GEN",
-                title: "Intel <span>Xeon VPS</span>",
-                info: "Powering Your Vision with High-Performance Nodes. Dedicated resources bina kisi lag ke.",
-                theme: "theme-blue",
+                badge: "INTEL HIGH-PERFORMANCE",
+                title: "Intel <span>Next-Gen VPS</span>",
                 plans: [
-                    { name: "ULTIMATE VPS", price: "340", ram: "12GB DDR4", cpu: "4 vCores", ssd: "100GB NVMe", extra: "VIP Support" },
+                    { name: "ULTIMATE VPS", price: "340", ram: "12GB DDR4", cpu: "4 vCores", ssd: "100GB NVMe", extra: "Turbo Speed" },
                     { name: "PRO VPS", price: "450", ram: "16GB DDR4", cpu: "6 vCores", ssd: "120GB NVMe", extra: "Dedicated Resources" },
-                    { name: "EXTREME VPS", price: "750", ram: "24GB DDR4", cpu: "8 vCores", ssd: "200GB NVMe", extra: "Turbo Speed" },
+                    { name: "EXTREME VPS", price: "750", ram: "24GB DDR4", cpu: "8 vCores", ssd: "200GB NVMe", extra: "VIP Support" },
                     { name: "MEGA VPS", price: "950", ram: "32GB DDR4", cpu: "10 vCores", ssd: "250GB NVMe", extra: "Enterprise Node" },
-                    { name: "TITAN VPS", price: "1370", ram: "48GB DDR4", cpu: "14 vCores", ssd: "400GB NVMe", extra: "Full Access" }
+                    { name: "TITAN VPS", price: "1370", ram: "48GB DDR4", cpu: "14 vCores", ssd: "400GB NVMe", extra: "Full Root Access" }
                 ]
             },
             amd: {
-                badge: "AMD EPVC POWER",
-                title: "AMD Epyc <span>VPS Hosting</span>",
-                info: "Maximum multi-core efficiency with AMD Epyc processors. Best for heavy databases and multi-threaded apps.",
-                theme: "theme-red",
+                badge: "AMD EPYC POWER",
+                title: "AMD <span>Epyc Servers</span>",
                 plans: [
-                    { name: "EPYC-S1", price: "400", ram: "8GB", cpu: "4 vCores", ssd: "80GB NVMe", extra: "High Bandwidth" },
-                    { name: "EPYC-S2", price: "800", ram: "16GB", cpu: "8 vCores", ssd: "150GB NVMe", extra: "Premium Anti-DDoS" },
-                    { name: "EPYC-MAX", price: "1500", ram: "32GB", cpu: "16 vCores", ssd: "300GB NVMe", extra: "Unlimited Ports" }
+                    { name: "EPYC-1", price: "500", ram: "10GB", cpu: "4 vCores", ssd: "100GB NVMe", extra: "DDoS Protected" },
+                    { name: "EPYC-2", price: "1000", ram: "20GB", cpu: "8 vCores", ssd: "200GB NVMe", extra: "Instant Setup" }
                 ]
             },
             ryzen: {
                 badge: "RYZEN 9 EXTREME",
                 title: "Ryzen 9 <span>Performance</span>",
-                info: "Single-thread beast! Ryzen 9 nodes are perfect for high-slot game servers and heavy development.",
-                theme: "theme-red",
                 plans: [
-                    { name: "RYZEN-R1", price: "600", ram: "8GB DDR4", cpu: "2 Dedicated", ssd: "60GB Gen4 NVMe", extra: "Ultra Low Latency" },
-                    { name: "RYZEN-R2", price: "1100", ram: "16GB DDR4", cpu: "4 Dedicated", ssd: "120GB Gen4 NVMe", extra: "Extreme Performance" },
-                    { name: "RYZEN-GOD", price: "2200", ram: "32GB DDR4", cpu: "8 Dedicated", ssd: "250GB Gen4 NVMe", extra: "Unmatched Speed" }
+                    { name: "RYZEN-R1", price: "600", ram: "8GB", cpu: "2 Dedicated", ssd: "60GB NVMe", extra: "Game Optimized" },
+                    { name: "RYZEN-GOD", price: "2000", ram: "32GB", cpu: "8 Dedicated", ssd: "250GB NVMe", extra: "Unmatched Power" }
                 ]
             }
         };
 
         function switchPage(pageKey, btnElement) {
             const data = allData[pageKey];
-            const body = document.getElementById('mainBody');
-            
-            // Update Active Button
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
 
-            // Update Theme
-            body.className = data.theme;
-
-            // Update Header
             document.getElementById('pageBadge').innerText = data.badge;
             document.getElementById('heroTitle').innerHTML = data.title;
-            document.getElementById('infoBox').innerText = data.info;
 
-            // Render Plans
             const container = document.getElementById('plansContainer');
             container.innerHTML = '';
             
@@ -221,18 +199,17 @@
                             <li><i class="fas fa-memory"></i> ${p.ram} RAM</li>
                             <li><i class="fas fa-microchip"></i> ${p.cpu} CPU</li>
                             <li><i class="fas fa-hdd"></i> ${p.ssd}</li>
-                            <li><i class="fas fa-shield-halved"></i> ${p.extra}</li>
-                            <li><i class="fas fa-check"></i> DDoS Protection</li>
+                            <li><i class="fas fa-shield-halved"></i> DDoS Protection</li>
+                            <li><i class="fas fa-check-circle"></i> ${p.extra}</li>
                         </ul>
-                        <button class="btn-buy" onclick="window.location.href='https://discord.com/channels/1331996056971641055/1457357769320698032'">
-                            <i class="fas fa-ticket-alt"></i> Order Now
-                        </button>
+                        <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn-order">
+                            <i class="fas fa-rocket"></i> Order Now
+                        </a>
                     </div>
                 `;
             });
         }
 
-        // Snow Effect
         function createSnow() {
             const snow = document.createElement('div');
             snow.classList.add('snowflake');
@@ -244,9 +221,9 @@
             setTimeout(() => snow.remove(), 5000);
         }
 
-        // Initial Load
         switchPage('budget', document.querySelector('.tab-btn'));
         setInterval(createSnow, 100);
     </script>
 </body>
 </html>
+
