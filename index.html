@@ -10,7 +10,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: #050816; color: white; overflow-x: hidden; }
 
-
         /* Background GIF */
         .main-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -25,52 +24,59 @@
         /* Navbar */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(0, 0, 0, 0.8);
+            padding: 10px 5%; background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #facc15; }
+        .logo { font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; }
+        .logo img { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #facc15; }
         .logo span { color: #facc15; }
+
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { color: #aaa; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s; }
+        .nav-links a:hover { color: #fff; }
+        .panel-link { background: #facc15; color: #000 !important; padding: 5px 10px; border-radius: 5px; }
+
+        /* Dropdown for Hostings */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background: rgba(0,0,0,0.9); min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5); z-index: 1; border-radius: 8px; top: 25px;
+        }
+        .dropdown-content a { color: white; padding: 10px; display: block; font-size: 11px; border-bottom: 1px solid #222; }
+        .dropdown:hover .dropdown-content { display: block; }
 
         /* Hero & Switcher */
         .hero { padding: 120px 20px 40px; text-align: center; }
         .badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 18px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.4); }
-        h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 25px; font-weight: 900; }
+        h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: 25px; font-weight: 900; }
         h1 span { color: #3b82f6; }
 
-        /* 4-Page Navigation Tab */
-        .tab-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .tab-container { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; }
         .tab-btn { 
-            padding: 12px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
+            padding: 10px 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 12px; color: #9ca3af; cursor: pointer; font-weight: 700; transition: 0.3s;
-            display: flex; align-items: center; gap: 8px; font-size: 14px;
+            display: flex; align-items: center; gap: 5px; font-size: 12px;
         }
         .tab-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-        .tab-btn:hover { background: rgba(59, 130, 246, 0.2); color: white; }
 
-        /* Info Box */
         .info-box { 
             max-width: 800px; margin: 0 auto 40px; padding: 20px; 
             background: rgba(255,255,255,0.03); border-radius: 15px; border-left: 4px solid #3b82f6;
             text-align: left; font-size: 14px; color: #d1d5db;
         }
 
-        /* Plans Grid */
-        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; }
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding-bottom: 50px; }
         
         .card { 
             background: rgba(17, 24, 39, 0.8); border: 1px solid rgba(255,255,255,0.08); 
             border-radius: 20px; padding: 25px; transition: 0.4s; text-align: left;
-            position: relative; overflow: hidden;
         }
         .card:hover { transform: translateY(-10px); border-color: #3b82f6; }
         
         .plan-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .plan-name { font-size: 1.4rem; font-weight: 800; }
-        .price-tag { text-align: right; }
-        .price-tag h3 { font-size: 1.6rem; color: #fff; }
-        .price-tag span { font-size: 11px; color: #aaa; display: block; }
+        .plan-name { font-size: 1.2rem; font-weight: 800; }
+        .price-tag h3 { font-size: 1.5rem; color: #fff; }
 
         .specs-list { list-style: none; margin-bottom: 25px; }
         .specs-list li { font-size: 13px; color: #d1d5db; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
@@ -81,32 +87,25 @@
             background: #3b82f6; color: white; font-weight: 800; cursor: pointer; 
             transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .btn-buy:hover { filter: brightness(1.2); }
 
-        /* Red Theme for High End Sections */
-        .theme-red .tab-btn.active { background: #ef4444; border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        /* Themes */
+        .theme-red .tab-btn.active, .theme-red .btn-buy { background: #ef4444; }
         .theme-red .info-box { border-left-color: #ef4444; }
-        .theme-red .specs-list li i { color: #ef4444; }
-        .theme-red .btn-buy { background: #ef4444; }
-        .theme-red h1 span { color: #ef4444; }
-
-        /* green Theme for High End Sections */
-        .theme-green .tab-btn.active { background: #32d725; border-color: #32d725; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        .theme-green .tab-btn.active, .theme-green .btn-buy { background: #32d725; }
         .theme-green .info-box { border-left-color: #32d725; }
-        .theme-green .specs-list li i { color: #32d725; }
-        .theme-green .btn-buy { background: #32d725; }
-        .theme-green h1 span { color: #32d725; }
-
-        /* Yellow Theme for High End Sections */
-        .theme-yellow .tab-btn.active { background: #9c2bce; border-color: #9c2bce; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+        .theme-yellow .tab-btn.active, .theme-yellow .btn-buy { background: #9c2bce; }
         .theme-yellow .info-box { border-left-color: #9c2bce; }
-        .theme-yellow .specs-list li i { color: #9c2bce; }
-        .theme-yellow .btn-buy { background: #9c2bce; }
-        .theme-yellow h1 span { color: #9c2bce; }
+
+        /* Footer Section */
+        footer { background: rgba(0,0,0,0.9); padding: 40px 5%; text-align: center; border-top: 1px solid #333; margin-top: 50px; }
+        .footer-logo { font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; color: #facc15; }
+        .footer-desc { font-size: 13px; color: #aaa; max-width: 600px; margin: 0 auto 20px; }
+        .social-links a { color: white; margin: 0 10px; font-size: 20px; }
         
         @media (max-width: 768px) {
-            .hero { padding-top: 100px; }
-            .plans-grid { padding: 0 15px; }
+            nav { flex-direction: column; gap: 10px; padding: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .hero { padding-top: 150px; }
         }
     </style>
 </head>
@@ -115,11 +114,22 @@
     <div class="main-bg"></div>
 
     <nav>
-        <a href="#" class="logo">
+        <a href="https://supergmt95.github.io/CoreMMC-Hosting/" class="logo">
             <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg" alt="CoreMMC">
             <span>CoreMMC</span>
         </a>
-        <div style="font-size: 12px; font-weight: bold; color: #aaa;">VPS DASHBOARD</div>
+        <div class="nav-links">
+            <a href="https://supergmt95.github.io/CoreMMC-Hosting/">HOME</a>
+            <div class="dropdown">
+                <a href="#">HOSTINGS <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="https://supergmt95.github.io/View-plans/">Minecraft Hosting</a>
+                    <a href="https://supergmt95.github.io/View-plans">Bot Hosting</a>
+                    <a href="https://supergmt95.github.io/View-plans/">Web Hosting</a>
+                </div>
+            </div>
+            <a href="https://cp.warnode.cloud/" class="panel-link">VPS PANEL</a>
+        </div>
     </nav>
 
     <section class="hero">
@@ -142,12 +152,20 @@
         </div>
 
         <div class="info-box" id="infoBox">
-            Low-cost, high-reliability VPS hosting. Perfect for small projects, discord bots, and lightweight applications. OS: Linux/Ubuntu supported.
+            Low-cost, high-reliability VPS hosting. Perfect for small projects, discord bots, and lightweight applications.
         </div>
 
-        <div class="plans-grid" id="plansContainer">
-            </div>
+        <div class="plans-grid" id="plansContainer"></div>
     </section>
+
+    <footer>
+        <div class="footer-logo">CoreMMC Hosting</div>
+        <p class="footer-desc">CoreMMC provides premium yet affordable hosting solutions. Whether it's high-speed VPS, Minecraft servers, or Bot hosting, we ensure top-notch performance and 99.9% uptime for our clients worldwide.</p>
+        <div class="social-links">
+            <a href="https://discord.gg/rhWqkRuHth" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+        <p style="font-size: 11px; color: #555; margin-top: 15px;">© 2026 CoreMMC. All Rights Reserved.</p>
+    </footer>
 
     <script>
         const allData = {
@@ -182,13 +200,12 @@
                     { name: "CORE-VPS [Ultra Tier]", price: "1880", ram: "32GB DDR4", cpu: "10 vCores", ssd: "320GB NVMe", extra: "Priority Support 📞" },
                     { name: "CORE-VPS [Super Tier]", price: "2450", ram: "48GB DDR4", cpu: "12 vCores", ssd: "480GB NVMe", extra: "Dedicated Support 💎" },
                     { name: "CORE-VPS [Supre Tier]", price: "2900", ram: "64GB DDR4", cpu: "16 vCores", ssd: "640GB NVMe", extra: "Dedicated Support 💎" }
-                    
                 ]
             },
             amd: {
                 badge: "AMD EPVC POWER",
                 title: "AMD Epyc <span>VPS Hosting</span>",
-                info: "Maximum multi-core efficiency with AMD Epyc processors. Best for heavy databases and multi-threaded apps.",
+                info: "Maximum multi-core efficiency with AMD Epyc processors. Best for heavy databases.",
                 theme: "theme-green",
                 plans: [
                     { name: "CORE-VPS [Entry Level]", price: "280", ram: "4GB DDR4", cpu: "2 vCores", ssd: "40GB NVMe", extra: "2Gbps Unmetered" },
@@ -200,13 +217,12 @@
                     { name: "CORE-VPS [Ultra Tier]", price: "2199", ram: "32GB DDR4", cpu: "10 vCores", ssd: "320GB NVMe", extra: "Priority Support 📞" },
                     { name: "CORE-VPS [Super Tier]", price: "2960", ram: "48GB DDR4", cpu: "12 vCores", ssd: "480GB NVMe", extra: "Priority Support 📞" },
                     { name: "CORE-VPS [Supre Tier]", price: "3999", ram: "64GB DDR4", cpu: "16 vCores", ssd: "640GB NVMe", extra: "Dedicated Support 🔵" }
-                    
                 ]
             },
             ryzen: {
                 badge: "RYZEN 9 EXTREME",
                 title: "Ryzen 9 <span>Performance</span>",
-                info: "Single-thread beast! Ryzen 9 nodes are perfect for high-slot game servers and heavy development.",
+                info: "Single-thread beast! Ryzen 9 nodes are perfect for game servers.",
                 theme: "theme-red",
                 plans: [
                     { name: "RYZEN-R1", price: "600", ram: "8GB DDR4", cpu: "2 Dedicated", ssd: "60GB Gen4 NVMe", extra: "Ultra Low Latency" },
@@ -220,61 +236,41 @@
         function switchPage(pageKey, btnElement) {
             const data = allData[pageKey];
             const body = document.getElementById('mainBody');
-            
-            // Update Active Button
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
-
-            // Update Theme
             body.className = data.theme;
-
-            // Update Header
             document.getElementById('pageBadge').innerText = data.badge;
             document.getElementById('heroTitle').innerHTML = data.title;
             document.getElementById('infoBox').innerText = data.info;
-
-            // Render Plans
             const container = document.getElementById('plansContainer');
             container.innerHTML = '';
-            
             data.plans.forEach(p => {
                 container.innerHTML += `
                     <div class="card">
                         <div class="plan-header">
                             <div class="plan-name">${p.name}</div>
-                            <div class="price-tag">
-                                <h3>₹${p.price}</h3>
-                                <span>/monthly</span>
-                            </div>
+                            <div class="price-tag"><h3>₹${p.price}</h3><span>/monthly</span></div>
                         </div>
                         <ul class="specs-list">
                             <li><i class="fas fa-memory"></i> ${p.ram} RAM</li>
                             <li><i class="fas fa-microchip"></i> ${p.cpu} CPU</li>
                             <li><i class="fas fa-hdd"></i> ${p.ssd}</li>
                             <li><i class="fas fa-shield-halved"></i> ${p.extra}</li>
-                            <li><i class="fas fa-check"></i> DDoS Protection</li>
                         </ul>
-                        <button class="btn-buy" onclick="window.location.href='https://discord.com/channels/1331996056971641055/1457357769320698032'">
-                            <i class="fas fa-ticket-alt"></i> Order Now
-                        </button>
-                    </div>
-                `;
+                        <button class="btn-buy" onclick="window.location.href='https://discord.com/channels/1331996056971641055/1457357769320698032'">Order Now</button>
+                    </div>`;
             });
         }
         
-        // Snow Effect
         function createSnow() {
             const snow = document.createElement('div');
-            snow.classList.add('snowflake');
-            snow.innerHTML = '❄';
+            snow.classList.add('snowflake'); snow.innerHTML = '❄';
             snow.style.left = Math.random() * 100 + 'vw';
             snow.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            snow.style.opacity = Math.random();
             document.body.appendChild(snow);
             setTimeout(() => snow.remove(), 5000);
         }
 
-        // Initial Load
         switchPage('budget', document.querySelector('.tab-btn'));
         setInterval(createSnow, 100);
     </script>
